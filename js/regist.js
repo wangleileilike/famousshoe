@@ -23,8 +23,18 @@
 	$("#regist_change_btn").click();
 	
 	
-	
-	
-	
+	//开始用户注册验证
+	$("#btn").click(function(){	
+		//console.log($("#username").val());
+	$.get(
+		"http://datainfo.duapp.com/shopdata/userinfo.php",
+		{"status":"register","userID":$("#username").val(),"password":$("#psw1").val()},
+		function(data){
+			console.log(data);
+		}
+	)	
+})
 	
 })();
+
+

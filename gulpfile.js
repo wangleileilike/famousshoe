@@ -16,10 +16,11 @@ gulp.task("index",function(){
 
 //配置HTML文件夹
 gulp.task("html",function(){
-	gulp.src("html/**.html")
-	.pipe(gulp.dest("dist/html"))
+	gulp.src("*.html")
+	.pipe(gulp.dest("dist"))
 	.pipe(connect.reload());
 });
+
 
 //配置css文件夹
 gulp.task("sass",function(){
@@ -69,7 +70,7 @@ gulp.task("plugin",function(){
 //侦测文件变化watch
 gulp.task("watch",function(){
 	gulp.watch("index.html",["index"]);
-	gulp.watch("html/**.html",["html"]);
+	gulp.watch("*.html",["html"]);
 	gulp.watch("images/**",["img"]);
 	gulp.watch("sass/**.scss",["sass"]);
 	gulp.watch("js/**.js",["scripts"]);

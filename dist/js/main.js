@@ -29,7 +29,7 @@
 			//console.log(data);
 			for (var i = 0; i < data.length; i++) {
 				var _index = i;
-				$("#detailist").append("<li class = 'goods'><a href=''>" + data[i]["name"] + "</a><ul class='secondul'></ul></li>");
+				$("#detailist").append("<li class = 'goods'><a href='http://localhost:8080/classfiy.html'>" + data[i]["name"] + "</a><ul class='secondul'></ul></li>");
 			}
 
 			$("#allgods").hover(function () {
@@ -43,10 +43,10 @@
 				$(this).find(".secondul").show().parent().addClass("hover").siblings().find(".secondul").css("display", "none").parent().removeClass("hover");
 				//console.log(data[index]["city"]);
 				for (var j = 0; j < data[index]["city"].length; j++) {
-					$(this).find(".secondul").append("<li class='goodstwo'><a href=''>" + data[index]['city'][j]['name'] + "</a><ul class='threeul'></ul></li>");
+					$(this).find(".secondul").append("<li class='goodstwo'><a href='http://localhost:8080/classfiy.html'>" + data[index]['city'][j]['name'] + "</a><ul class='threeul'></ul></li>");
 
 					for (var k = 0; k < data[index]['city'][j]["area"].length; k++) {
-						$(this).find(".secondul").find(".threeul").append("<li><a href=''>" + data[index]["city"][j]["area"][k] + "</a></li>");
+						$(this).find(".secondul").find(".threeul").append("<li><a href='http://localhost:8080/classfiy.html'>" + data[index]["city"][j]["area"][k] + "</a></li>");
 					}
 				}
 			}, function () {
@@ -65,11 +65,11 @@
 				$('#mansport').append('<ul><p>' + data[i].name + '</p></ul>');
 				for (var j = 0; j < data[i].title.length; j++) {
 					if (i < 2) {
-						$('#mansport').find('ul').eq(i).append("<li><a href=''>" + data[i].title[j] + "</a></li>");
+						$('#mansport').find('ul').eq(i).append("<li><a href='http://localhost:8080/classfiy.html'>" + data[i].title[j] + "</a></li>");
 					}
 					if (i >= 2) {
 						//console.log(data[i].title[j]); 
-						$('#mansport').find("ul").eq(i).append("<li><a href=' '><img src='images/" + data[i].title[j] + "'></a></li>");
+						$('#mansport').find("ul").eq(i).append("<li><a href=' http://localhost:8080/classfiy.html'><img src='images/" + data[i].title[j] + "'></a></li>");
 					}
 				}
 			}
@@ -91,11 +91,11 @@
 				$('#womansport').append('<ul><p>' + data[i].name + '</p></ul>');
 				for (var j = 0; j < data[i].title.length; j++) {
 					if (i < 2) {
-						$('#womansport').find('ul').eq(i).append("<li><a href=''>" + data[i].title[j] + "</a></li>");
+						$('#womansport').find('ul').eq(i).append("<li><a href='http://localhost:8080/classfiy.html'>" + data[i].title[j] + "</a></li>");
 					}
 					if (i >= 2) {
 						//console.log(data[i].title[j]); 
-						$('#womansport').find("ul").eq(i).append("<li><a href=' '><img src='images/" + data[i].title[j] + "'></a></li>");
+						$('#womansport').find("ul").eq(i).append("<li><a href='http://localhost:8080/classfiy.html'><img src='images/" + data[i].title[j] + "'></a></li>");
 					}
 				}
 			}
@@ -140,4 +140,12 @@
 	});
 
 	$("#regist_change_btn").click();
+
+	//开始用户注册验证
+	$("#btn").click(function () {
+		//console.log($("#username").val());
+		$.get("http://datainfo.duapp.com/shopdata/userinfo.php", { "status": "register", "userID": '$("#username").val()', "password": '$("#psw1").val()' }, function (data) {
+			console.log(data);
+		});
+	});
 })();

@@ -46,3 +46,31 @@
   width: 951px;
   height: 291px;
   margin: 0 auto; }
+
+#shortshirt_list {
+  width: 978px;
+  min-height: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; }
+
+#shortshirt_list dl {
+  width: 237px;
+  height: 282px;
+  background: #fff; }
+
+#shortshirt_list dl dd {
+  border-top: 1px solid #ccc; }
+
+#shortshirt_list dl dd p {
+  padding-left: 8px; }
+
+#shortshirt_list dl b {
+  color: red;
+  margin-left: 8px; }
+
+#shortshirt_list dl:hover {
+  border: 2px solid red; }
