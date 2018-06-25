@@ -36,6 +36,15 @@ gulp.task("img",function(){
 	.pipe(connect.reload());
 });
 
+//配置json数据文件
+gulp.task("data",function(){
+	return gulp.src("json/*.json")
+	.pipe(gulp.dest("dist/data"))
+	.pipe(connect.reload());
+});
+
+
+
 
 //将合并js文件进行压缩gulp-uglify
 gulp.task("scripts",function(){
@@ -65,6 +74,7 @@ gulp.task("watch",function(){
 	gulp.watch("sass/**.scss",["sass"]);
 	gulp.watch("js/**.js",["scripts"]);
 	gulp.watch("plugin/**",["plugin"]);
+	gulp.watch("json/**.json",["data"]);
 });
 
 //对图片进行压缩

@@ -1,0 +1,161 @@
+#regist_main{
+    width: 780px;
+    height: 440px;
+    border: 1px solid #cecece;
+    margin: 0px auto;
+
+}
+#backindex{
+    width: 780px;
+    margin: 0 auto 5px;
+    text-align: right;
+}
+
+#backindex>a{   
+    font-size: 12px;
+    color: #999;
+}
+#yhm{
+    position: relative;
+}
+#yhm h4{
+    padding-right: 5px;
+    position: absolute;
+    left: 154px;
+    top: -26px;
+    min-width: 10px;
+    height: 21px;
+    background: #fceae8;
+   color: #e6594e;
+   font-size: 12px;
+   border: 1px solid #e6594e;
+   text-indent: 20px;
+   line-height: 21px;
+   background-image:url(../images/zhucetanhao.png) ;
+   background-repeat:no-repeat ;
+   background-position:3px 4px;
+}
+
+#zhuche label{
+    font-size: 14px;
+    color: #666;
+}
+
+#regist_main p{
+    height: 30px;
+    background: #f8f8f8;
+    color: #968888;
+    line-height: 30px;
+}
+#zhuce_form{
+    border-right: 1px dashed #999;
+    width: 500px;
+    height: 308px;
+    margin-top: 44px ;
+}
+#zhuce_form>div{
+    margin: 15px auto;
+}
+#zhuce_form>div:nth-of-type(1){
+    padding-left: 98px;
+}
+
+#zhuce_form>div:nth-of-type(2){
+    padding-left: 112px;
+}
+#zhuce_form>div:nth-of-type(3){
+    padding-left: 84px;
+}
+#zhuce_form>div:nth-of-type(4){
+    padding-left: 100px;
+}
+#zhuce_form>div:nth-of-type(5){
+    padding-left: 140px;
+}
+
+#psw1,#username,#psw2{
+    width: 230px;
+    height: 30px;
+    border: 1px solid #ccc;
+}
+
+#psw3{
+    width: 65px;
+    height: 24px;
+    border: 1px solid #ccc;
+}
+
+#btn{
+    display: block;
+    width: 89px;
+    height: 37px;
+    background: #dc4605;
+    border-radius: 3px;
+    border: 0;
+    margin-left: 175px;
+    color: #fff;
+    line-height: 37px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#yzm #changpic{
+    background: #eee;
+    font-weight: 800;
+}
+
+#yzm b a{
+    color: #666;
+    font-size: 14px;
+}
+#imsure span{
+    color: #666;
+    font-size: 14px;
+}
+#imsure span a{
+    color: #3366dd;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+
+#zhuche{
+    position: relative;
+}
+//右边的已有账号登录
+#regist_right{
+    position: absolute;
+    right: 80px;
+    top: 100px;
+}
+
+
+#regist_right_title strong{
+    font-size: 14px;
+}
+
+#regist_right_title a{
+    margin-left: 7px;
+    margin-top: 8px;
+     color: #cc6666;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+     display: block;
+    width: 89px;
+    height: 30px;
+    background: pink;
+    border-radius: 3px;
+    border: 0;
+    border: 1px solid #f1d9a5;
+    opacity: 0.8;
+}
+#regist_right_title a:hover{
+    opacity: 1;
+}
+
+.active1{
+    background: ghostwhite;
+}

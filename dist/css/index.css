@@ -1,0 +1,48 @@
+#banner {
+  height: 552px;
+  width: 100%;
+  background-image: url(../images/banner.jpg);
+  background-repeat: no-repeat;
+  background-position: -340px top; }
+
+#banner img {
+  height: 552px; }
+
+#main {
+  min-height: 600px;
+  background: #c5defd; }
+
+#logoall {
+  width: 874px;
+  height: 434px;
+  margin: 0 auto 20px;
+  background-image: url(../images/allpic.jpg);
+  background-repeat: no-repeat;
+  background-position: -523px 5px;
+  position: relative; }
+
+#line1 {
+  position: absolute;
+  height: 250px;
+  width: 100px;
+  left: 150px;
+  top: 33px; }
+
+#line1 li a {
+  display: block;
+  width: 100px;
+  height: 125px; }
+
+#bigpic {
+  background-image: url(../images/main1_pic.jpg);
+  background-repeat: no-repeat;
+  background-position: -330px top;
+  height: 1060px; }
+
+#shortshirt_tiitle a {
+  display: block; }
+
+#shortshirt_tiitle a img {
+  width: 951px;
+  height: 291px;
+  margin: 0 auto; }
