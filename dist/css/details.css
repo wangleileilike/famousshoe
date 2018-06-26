@@ -1,4 +1,119 @@
 #main_details {
   min-height: 300px;
   width: 100%;
-  background: orchid; }
+  background: #fff; }
+
+#main_details #main_details_box {
+  width: 992px;
+  height: 487px;
+  margin: 10px auto;
+  box-sizing: border-box; }
+
+#details_left_top {
+  width: 430px;
+  height: 430px;
+  border: 1px solid #ccc;
+  position: relative; }
+
+#details_left_top img {
+  width: 430px;
+  height: 430px;
+  position: absolute; }
+
+#details_left_bottom ul li {
+  float: left;
+  border-color: #999;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 8px;
+  margin-left: 10px;
+  cursor: pointer; }
+
+#details_left_bottom ul li img {
+  width: 45px;
+  height: 35px; }
+
+#detailist, #mansport, #womansport {
+  z-index: 9999; }
+
+.classfiy_show {
+  z-index: 1; }
+
+#details_left_bottom ul .bordercolor {
+  border-color: red; }
+
+#details_right {
+  width: 540px;
+  height: 100%;
+  float: right;
+  box-sizing: border-box;
+  padding-left: 10px; }
+
+#details_price {
+  height: 112px;
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+  padding-top: 10px; }
+
+#details_price p {
+  line-height: 26px; }
+
+#details_num {
+  height: 128px;
+  width: 100%;
+  background: #f5f5f5;
+  overflow: hidden; }
+
+.num_line #gmsl, .num_line #jiajian {
+  float: left; }
+
+.num_line #gmsl {
+  margin-right: 10px; }
+
+#reduce, #num_line_txt, #plus {
+  float: left; }
+
+#num_line_txt {
+  width: 30px;
+  text-align: center; }
+
+#reduce, #plus {
+  cursor: pointer; }
+
+.num_line {
+  margin: 15px 0;
+  margin-left: 10px; }
+
+#nowbuy_left, #ljgm, #jrgwc {
+  float: left; }
+
+#ljgm, #jrgwc {
+  float: left;
+  width: 130px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  border-radius: 5px;
+  margin-top: 70px; }
+
+#ljgm {
+  background: #cb0606; }
+
+#jrgwc {
+  background: #ee7100;
+  margin-left: 10px; }
+
+#nowbuy {
+  height: 200px;
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc; }
+
+#nowbuy_left {
+  margin-right: 50px;
+  padding-top: 80px; }
+
+#nowbuy_left strong {
+  color: red; }

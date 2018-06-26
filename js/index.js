@@ -136,7 +136,29 @@
 	})			
 })();
 
-
+/*//调用数据
+;(function(){
+	$(function(){
+			$.ajax({
+				type:"get",
+				url:"http://datainfo.duapp.com/shopdata/getGoods.php?callback=?",
+				async:true,
+				dataType:"jsonp",
+				success:function(data){
+					console.log(data);
+					
+					
+					
+				}
+			});
+	
+	
+	
+	});
+	
+	
+	
+})(); //调用数据end*/
 
 
 

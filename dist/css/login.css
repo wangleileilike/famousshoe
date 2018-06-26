@@ -12,13 +12,13 @@
   font-size: 12px;
   color: #999; }
 
-#yhm {
+#login_yhm {
   position: relative; }
 
-#yhm h4 {
+#login_yhm #login_tishi {
   padding-right: 5px;
   position: absolute;
-  left: 154px;
+  left: 90px;
   top: -26px;
   min-width: 10px;
   height: 21px;
@@ -86,18 +86,18 @@
 #zhuce_form {
   overflow: hidden; }
 
-#zhuce_form #yhm {
+#zhuce_form #login_yhm {
   margin-top: 35px; }
 
 #mima1 input {
   margin-left: 14px; }
 
-#psw1, #username, #psw2 {
+#login_psw1, #login_username, #psw2 {
   width: 230px;
   height: 30px;
   border: 1px solid #ccc; }
 
-#psw3 {
+#login_psw3 {
   width: 65px;
   height: 24px;
   border: 1px solid #ccc; }
@@ -128,7 +128,7 @@
   font-size: 12px;
   margin-left: 10px; }
 
-#btn {
+#login_btn {
   display: block;
   width: 89px;
   height: 37px;
@@ -142,7 +142,7 @@
   font-size: 14px;
   cursor: pointer; }
 
-#yzm #changpic {
+#yzm #login_changpic {
   background: #eee;
   font-weight: 800; }
 

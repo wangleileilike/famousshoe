@@ -77,13 +77,14 @@
   height: 24px;
   border: 1px solid #ccc; }
 
-#btn {
+#regist_btn {
   display: block;
   width: 89px;
   height: 37px;
   background: #dc4605;
   border-radius: 3px;
-  border: 0;
+  border-color: #fff;
+  outline: none;
   margin-left: 175px;
   color: #fff;
   line-height: 37px;

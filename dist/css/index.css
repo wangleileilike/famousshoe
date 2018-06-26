@@ -42,6 +42,12 @@
 #shortshirt_tiitle a {
   display: block; }
 
+#shortshirt_list a {
+  margin-bottom: 6px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #fff; }
+
 #shortshirt_tiitle a img {
   width: 951px;
   height: 291px;
@@ -55,7 +61,13 @@
   overflow: hidden;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; }
+  align-content: flex-start;
+  flex-wrap: wrap; }
+
+#shortshirt_list dl {
+  width: 237px;
+  height: 282px;
+  background: #fff; }
 
 #shortshirt_list dl {
   width: 237px;
@@ -72,5 +84,5 @@
   color: red;
   margin-left: 8px; }
 
-#shortshirt_list dl:hover {
-  border: 2px solid red; }
+#shortshirt_list a:hover {
+  border-color: red; }
