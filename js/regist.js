@@ -41,7 +41,7 @@
 			}
 			if(data == 1){
 				$("#regist_tishi").text("注册成功");
-				window.location.href="http://localhost:8080/login.html";
+				window.location.href="login.html";
 			}
 			
 

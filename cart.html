@@ -2,8 +2,90 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>购物车页面</title>
+		<link rel="stylesheet" type="text/css" href="css/cart.css"/>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
 	</head>
 	<body>
+		<!--logo-->
+		<div id="top">
+			<div id="top_wrap">
+				<h1>
+					<a href="index.html">
+						<img src="../images/logo.png"/>
+					</a>					
+				</h1>					
+			</div>				
+		</div>
+		<!--主要部分-->
+		<div id="cart_main">
+			<p>我的购物车</p>
+			<div id="cart_list_wrap">
+				<div id="cart_title">
+					<span>商品信息</span>
+					<span>赠送积分</span>
+					<span>销售价格</span>
+					<span>数量</span>
+					<span>折扣/优惠</span>
+					<span>小计</span>
+					<span>操作</span>
+				</div>
+					<ul id="cart_list">
+						<!--需要插入的li-->
+							<li>
+								<!--图片-->
+								<img src="images/cart_shoe.jpg"/>
+								<!--图片信息-->
+								<div>
+									<p>
+										<a href="">adidas阿迪达斯男鞋篮球鞋新款团队实战运动鞋S83778
+</a>	<br />							<span>( 尺码:42,颜色:深褐灰+红荧光+1号黑色 )</span>
+									</p>									
+								</div>
+								<!--赠送积分-->
+								<strong>0</strong>
+								<!--销售价格-->
+								<strong>￥399.00</strong>
+								<!--数量-->
+								<div>
+									<input type="button"  class="reduce" value="-" />
+									<input type="text" class="num_line_txt" value="1"/>
+									<input type="button"  class="plus" value="+" />
+								</div>
+								<!--折扣优惠-->
+							<strong>-￥40.00</strong>
+							<!--小计-->
+							<strong>-￥359.00</strong>
+							<p class="cart_delete">
+								<a href="">收藏</a>
+								<a href="">删除</a>
+							</p>								
+							</li>
+						<!--li结尾-->	
+						
+				
+				
+					</ul>
+					
+					<div class="cart_bottom">
+						<div id="all_nums">
+							商品数量: <b style="color: red;"></b> 件
+						</div>
+						<div id="all_money">
+							商品总金额:<b style="color: red;">￥1000.00</b>
+						</div>
+					</div>
+					
+					<div id="con_or_stop">
+						<a href="">继续购物</a>
+						<a href="">下 单 结 算</a>
+					</div>
+			</div>
+		</div>
+		
+		
+		<script src="plugin/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+		<script src="js/main.min.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

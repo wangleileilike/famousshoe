@@ -1,20 +1,79 @@
 "use strict";
 
-;(function () {
+$(function () {
+	$.getJSON("http://datainfo.duapp.com/shopdata/getCar.php?callback=?", { userID: $.cookie("username") }, function (data2) {
+		console.log(data2); //获得存入购物车的值
+		var cart_str = "";
+		var saveID = "";
+		$.each(data2, function (index, item) {
+			saveID += "goodsID=" + item.goodsID + "&";
+			cart_str += "<li>\n\t\t\t\t\t\t\t\t<img src=\"" + item.goodsListImg + "\"/>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t\t\t<a href=\"detail.html?id=" + item.goodsID + "\">" + item.goodsName + "</a><br />\n\t\t\t\t\t\t\t\t\t\t<span>" + item.className + "</span>\n\t\t\t\t\t\t\t\t\t</p>\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<strong>1</strong>\n\t\t\t\t\t\t\t\t<strong>\uFFE5399.00</strong>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t<input type=\"button\"  class=\"reduce\" value=\"-\" />\n\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"num_line_txt\" value=\"" + item.number + "\"/>\n\t\t\t\t\t\t\t\t\t<input type=\"button\"  class=\"plus\" value=\"+\" />\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<strong>" + item.price + "</strong>\n\t\t\t\t\t\t\t<strong>-\uFFE5359.00</strong>\n\t\t\t\t\t\t\t<p class=\"cart_delete\">\n\t\t\t\t\t\t\t\t<a href=\"\">\u6536\u85CF</a>\n\t\t\t\t\t\t\t\t<a href=\"\">\u5220\u9664</a>\n\t\t\t\t\t\t\t</p>\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>";
+		});
+
+		$("#cart_list").html(cart_str);
+		//加减购买数量
+		function foo() {
+			var arr = $(".num_line_txt").get(); //取到所有的框放到一个数组中
+			//console.log($(".num_line_txt").get());
+			var str = 0;
+			for (var i = 0; i < arr.length; i++) {
+				//console.log(arr[i].value)
+				str += parseInt(arr[i].value);
+			}
+			$("#all_nums b").text(str);
+		}
+
+		$(".plus").click(function () {
+			console.log("aaa");
+			$(this).prev().attr("value", parseInt($(this).prev().attr("value")) + 1);
+
+			foo();
+		}); //plus end
+
+		$(".reduce").click(function () {
+			$(this).next().attr("value", parseInt($(this).next().attr("value")) - 1);
+			if ($(this).next().attr("value") <= 0) {
+				$(this).next().attr("value", 0);
+			}
+			foo();
+		}); //reduce end
+
+	} //getjson回调函数的end
+	); //$.getjson的end
+
+
+	//点击购物车图标跳转购物车页面
+	$("#cartlogo").click(function () {
+		location.href = "cart.html";
+	}); //点击事件结尾
+
+}); //最后的结尾
+
+$(function () {
 	//点击跳转到详情页面
-	$("#main_classfiy_flex").find("a").click(function () {
-		window.location.href = "details.html";
+	var classid = location.search.split("=")[1];
+	$.getJSON("http://datainfo.duapp.com/shopdata/getGoods.php?callback=?", { classID: classid }, function (data) {
+		//console.log(data);
+		var str = "";
+		var index_str = "";
+		$.each(data, function (index, item) {
+			str += "<a href=\"details.html?id=" + item.goodsID + "\" class=\"main_classfiy_flex_list\" target=\"_blank\">\n\t\t\t\t\t\t<dl>\n\t\t\t\t\t\t\t<dt><img src=\"" + item.goodsListImg + "\"/></dt>\n\t\t\t\t\t\t\t<dd>\n\t\t\t\t\t\t\t\t<b>" + item.price + "</b>   <strong>\uFFE5359.00</strong>\n\t\t\t\t\t\t\t\t<span>" + item.goodsName + "</span>\n\t\t\t\t\t\t\t\t<p>\u5DF2\u7ECF\u552E\u51FA<em>149</em>\u4EF6</p>\n\t\t\t\t\t\t\t</dd>\n\t\t\t\t\t\t</dl>\t\t\t\t\t\t\n\t\t\t\t\t</a>";
+
+			index_str += "<a href=\"details.html?id=" + item.goodsID + "\" target=\"_blank\">\n\t\t\t\t\t\t<dl>\n\t\t\t\t\t\t\t<dt><img src=\"" + item.goodsListImg + "\"/></dt>\n\t\t\t\t\t\t\t<dd>\n\t\t\t\t\t\t\t\t<p>" + item.goodsName + "</p>\n\t\t\t\t\t\t\t\t<b>" + item.price + "</b>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</dd>\n\t\t\t\t\t\t</dl>\n\t\t\t\t\t</a>";
+		});
+
+		var indexAll = "";
+		for (var k = 0; k < 4; k++) {
+			indexAll += index_str;
+		}
+
+		$("#main_classfiy_flex").html(str);
+		$("#shortshirt_list").html(indexAll);
 	});
-})(); //匿名函数end
+}); //匿名函数end
 
 
-;(function () {
-
-	$("#details_left_bottom ul").find("li").mouseover(function () {
-		var indexImg = $(this).index();
-		$(this).addClass("bordercolor").siblings().removeClass("bordercolor");
-		$("#details_left_top").find("img").eq(indexImg).addClass("classfiy_show").siblings().removeClass("classfiy_show");
-	});
+$(function () {
 
 	//加减购买数量
 	$("#plus").click(function () {
@@ -30,7 +89,49 @@
 		$("#nowbuy_left strong").eq(0).text($(this).next().attr("value"));
 	}); //reduce end
 
-})();
+	//开始导入详情页数据
+	var goodsid = location.search.split("=")[1];
+	$.getJSON("http://datainfo.duapp.com/shopdata/getGoods.php?callback=?", { goodsID: goodsid }, function (data) {
+		//console.log(data);
+		var str1 = "<div id=\"details_left_top\">\n\t\t\t\t\t\t\t<img src=\"images/big1.jpg\"/>\n\t\t\t\t\t\t\t<img src=\"images/big2.jpg\"/>\n\t\t\t\t\t\t\t<img src=\"images/big3.jpg\"/>\n\t\t\t\t\t\t\t<img src=\"images/big4.jpg\"/>\n\t\t\t\t\t\t\t<img src=\"images/big5.jpg\"/>\n\t\t\t\t\t\t\t<img src=\"" + data[0].goodsListImg + "\"/>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div id=\"details_left_bottom\">\n\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t<li><img src=\"images/small1.jpg\"/></li>\n\t\t\t\t\t\t\t\t<li><img src=\"images/small2.jpg\"/></li>\n\t\t\t\t\t\t\t\t<li><img src=\"images/small3.jpg\"/></li>\n\t\t\t\t\t\t\t\t<li><img src=\"images/small4.jpg\"/></li>\n\t\t\t\t\t\t\t\t<li><img src=\"images/small5.jpg\"/></li>\n\t\t\t\t\t\t\t\t<li><img src=\"" + data[0].goodsListImg + "\"/></li>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>";
+		$("#details_left").html(str1);
+
+		$("#details_left_bottom ul").find("li").mouseover(function () {
+			var indexImg = $(this).index();
+			$(this).addClass("bordercolor").siblings().removeClass("bordercolor");
+			$("#details_left_top").find("img").eq(indexImg).addClass("classfiy_show").siblings().removeClass("classfiy_show");
+		});
+
+		$("#details_right_title").text(data[0].goodsName);
+		$("#details_price_currt").text(data[0].price);
+
+		//添加购物车start
+		$("#jrgwc").click(function () {
+			//console.log(data[0].goodsID);			
+			$.ajax({
+				type: "get",
+				url: "http://datainfo.duapp.com/shopdata/updatecar.php",
+				async: true,
+				//dataType:"jsonp",
+				data: { userID: $.cookie("username"), goodsID: data[0].goodsID },
+				success: function success(data1) {
+					//console.log(data1);
+					if (data1 == 1) {
+						$("#cart_tong").css("display", "block").text("添 加 成 功");
+						location.href = "cart.html";
+					} else {
+						$("#cart_tong").css("display", "block").text("添 加 失 败");
+					}
+				} //jrgwc回调函数end
+
+			}); //ajax的end
+		}); //jrgwc点击事件end			
+		//添加购物车end
+	} //$.getJSON回调函数end
+
+	); //getjson   ----end
+}) //$(function)-----end
+
 
 //搜索框获取焦点
 ;(function () {
@@ -197,7 +298,8 @@
 				$("#login_tishi").text("用户名与密码不符");
 			} else {
 				if ($("#login_psw3").val().toUpperCase() == $("#login_changpic").text()) {
-					window.location.href = "http://localhost:8080";
+					$.cookie("username", data.userID, { expires: 7, path: "/" }); //将登录用户名存入到cookie
+					window.location.href = "index.html";
 				} else {
 					$("#login_tishi").text("验证码输入错误");
 				}
@@ -242,7 +344,7 @@
 			}
 			if (data == 1) {
 				$("#regist_tishi").text("注册成功");
-				window.location.href = "http://localhost:8080/login.html";
+				window.location.href = "login.html";
 			}
 		}); //get --end
 

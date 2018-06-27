@@ -27,7 +27,8 @@
 			}
 			else{
 				if($("#login_psw3").val().toUpperCase() == $("#login_changpic").text()){
-					window.location.href="http://localhost:8080";
+					$.cookie("username",data.userID,{expires:7,path:"/"}); //将登录用户名存入到cookie
+					window.location.href="index.html";
 				}else{
 					$("#login_tishi").text("验证码输入错误");
 				}				

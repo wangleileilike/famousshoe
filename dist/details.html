@@ -174,12 +174,12 @@
 			<div id="main_details_box">
 				<!--右边-->
 				<div id="details_right">
-					<h4 id="details_right_title">
-						DC新款男鞋休闲鞋运动鞋运动休闲ADYS300184-WW0
+					<h4 id="details_right_title" style="color: red;">
+						<!--DC新款男鞋休闲鞋运动鞋运动休闲ADYS300184-WW0-->
 					</h4>
 					<div id="details_price">
 						<p>吊 牌 价：395.00</p>
-						<p>销 售 价：<span>￥395.00</span></p>
+						<p>销 售 价：<span id="details_price_currt" style="color: red;"><!--￥395.00--></span></p>
 						<p>好 评 度 ：395.00</p>
 						<p>运      费 ：395.00</p>
 					</div> 
@@ -209,17 +209,20 @@
 							您将购买 <strong> 1 </strong> 件 <strong> 37</strong>
 							码 白色
 						</div>
-						<a href="" id="ljgm">
-								立即购买
-						</a>
-						<a href="cart.html" id="jrgwc">
-								加入购物车
-							</a>
+						<input type="button" id="ljgm" value="立即购买">
+								
+						</input>
+						<input type="button" id="jrgwc" value="加入购物车">
+								
+							</input>
+							<div id="cart_tong">
+								
+							</div>
 					</div>
 				</div>
 				<!--左边-->
 				<div id="details_left">
-					<div id="details_left_top">
+					<!--<div id="details_left_top">
 							<img src="images/big1.jpg"/>
 							<img src="images/big2.jpg"/>
 							<img src="images/big3.jpg"/>
@@ -236,7 +239,7 @@
 								<li><img src="images/small5.jpg"/></li>
 								<li><img src="images/small6.jpg"/></li>
 							</ul>
-					</div>
+					</div>-->
 				</div>
 		</div>		
 		</div>
@@ -417,6 +420,7 @@
 		</footer>
 		
 		<script src="plugin/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 		<script src="js/main.min.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

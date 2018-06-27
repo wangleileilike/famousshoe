@@ -113,6 +113,7 @@
     font-weight: 800;
     border-radius: 5px;
     margin-top: 70px;
+    cursor: pointer;
 }
 #ljgm{
     background: #cb0606;
@@ -135,4 +136,24 @@
 
 #nowbuy_left strong{
     color: red;
+}
+
+
+
+#cart_tong{
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    background: rgba(12,0,0,0.7);
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    color: #fff;
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    display: none;
 }
