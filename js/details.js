@@ -56,7 +56,7 @@ $(function(){
 			
 			
 			
-			//添加购物车start
+			//添加购物车start跳转购物车页面
 			$("#jrgwc").click(function(){
 				//console.log(data[0].goodsID);			
 				$.ajax({
@@ -64,7 +64,7 @@ $(function(){
 					url:"http://datainfo.duapp.com/shopdata/updatecar.php",
 					async:true,
 					//dataType:"jsonp",
-					data:{userID:$.cookie("username"),goodsID:data[0].goodsID},
+					data:{userID:$.cookie("username"),goodsID:data[0].goodsID,number:$("#num_line_txt").val()},
 					success:function(data1){
 						//console.log(data1);
 						if(data1==1){

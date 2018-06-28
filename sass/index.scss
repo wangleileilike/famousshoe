@@ -48,7 +48,13 @@
 //运动短袖
 #shortshirt_tiitle a{
     display: block;   
+    width: 951px;
+    height: 291px;
+    margin: 10px auto 30px;
+    position: relative;
 }
+
+
 #shortshirt_list a{
     margin-bottom: 6px;
     border-width: 2px;
@@ -59,7 +65,9 @@
 #shortshirt_tiitle a img{
     width: 951px;
     height: 291px;
-    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #shortshirt_list{
@@ -102,3 +110,62 @@
 #shortshirt_list a:hover{
     border-color: red;
 }
+
+//右边侧边栏
+#cbl_main{
+    width: 200px;
+    background: #333333;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: -170px;
+    z-index: 9999;
+    
+}
+
+#cbl_main_left{
+    float: left;
+    width: 15%;
+    height: 100%;
+    color: #fff;
+}
+
+#cbl_main_left li{
+    height: 150px;
+    box-sizing: border-box;
+    padding-left: 7px;
+    padding-top: 10px;
+    font-family: "微软雅黑";
+    cursor: pointer;
+}
+
+#cbl_main_left li:hover{
+    background: #bd0000;
+}
+
+
+#cbl_main_right{
+     float: left;
+    width: 75%;
+     height: 100%;
+     display: flex;
+     justify-content: flex-start;
+     align-content: flex-start;
+     flex-wrap: wrap;
+     padding-top: 10px;
+}
+
+#cbl_main_right a{
+    display: block;
+    width: 42.5px;
+    height: 30px;
+    color-interpolation: #fff;
+    margin-right: 3px;
+    margin-bottom: 3px;
+}
+
+#cbl_main_right a  img{
+    width: 42.5px;
+    height: 30px;
+}
+

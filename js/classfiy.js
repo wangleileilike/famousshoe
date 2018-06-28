@@ -7,6 +7,7 @@ $(function(){
 		function(data){
 			//console.log(data);
 			var str = "";
+			var cbl_str = "";
 			var index_str = "";
 			$.each(data,function(index,item){
 				str += `<a href="details.html?id=${item.goodsID}" class="main_classfiy_flex_list" target="_blank">
@@ -30,6 +31,11 @@ $(function(){
 						</dl>
 					</a>`;
 					
+					cbl_str += `<a href="details.html?id=${item.goodsID}">
+						<img src="${item.goodsListImg}" alt="" />				
+				</a>`;
+					
+					
 			})
 			
 			var indexAll = "";
@@ -37,8 +43,14 @@ $(function(){
 				indexAll += index_str;
 			}
 			
+			var cbl_str_all = "";
+			for(var k=0;k<2;k++){
+				cbl_str_all += cbl_str;
+			}
+			
 			$("#main_classfiy_flex").html(str);
 			$("#shortshirt_list").html(indexAll);
+			$("#cbl_main_right").html(cbl_str_all);
 			
 		}		
 	);

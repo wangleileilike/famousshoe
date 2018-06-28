@@ -61,6 +61,7 @@
 							
 		}		
 	});	
+
 })();
 
 
@@ -136,29 +137,57 @@
 	})			
 })();
 
-/*//调用数据
-;(function(){
-	$(function(){
-			$.ajax({
-				type:"get",
-				url:"http://datainfo.duapp.com/shopdata/getGoods.php?callback=?",
-				async:true,
-				dataType:"jsonp",
-				success:function(data){
-					console.log(data);
-					
-					
-					
-				}
-			});
+
+
+$(function(){
+	//轮播图
+	var num = 0;
+	$("#lunbopic img").eq(num).fadeIn().stop().animate({opacity:1},100)
+		.siblings().fadeOut().stop().animate({opacity:0},100);
+	
+	var timer = setInterval(function(){
+		num++;
+		if(num>=$("#lunbopic img").length){
+			num=0;
+		}
+		
+		$("#lunbopic img").eq(num).fadeIn().stop().animate({opacity:1},100)
+		.siblings().fadeOut().stop().animate({opacity:0},100);
+		
+		
+	},2000)
 	
 	
+	//侧边栏
+
+	$("#cbl_main_left li:not(:last)").click(function(){
+			$(this).parent().parent().animate({right:0},800);				
+	});
 	
+	$("#cbl_return").click(function(){
+		$(this).parent().animate({right:-170},800);	
+	})
+	
+	
+	//回到顶部
+	$("#cbl_main_left li:last").click(function(){
+		$("html,body").animate({"scrollTop":0},500);
 	});
 	
 	
 	
-})(); //调用数据end*/
+	
+});  //$(function  ---end
+
+
+
+
+
+
+	
+	
+	
+
 
 
 

@@ -5,6 +5,7 @@
 		<title>首页</title>
 		<link rel="stylesheet" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="icon" href="//images.s.cn/favicon.ico" type="image/x-icon" />
 	</head>
 	<body>
 		<!--头部-->
@@ -204,7 +205,14 @@
 			<!--运动短袖-->
 			<div id="shortshirt">
 				<div id="shortshirt_tiitle">
-					<a href="classfiy.html" target="_blank"><img src="images/main_2.jpg"/></a>
+					<a href="classfiy.html" target="_blank" id="lunbopic">
+						<img src="images/main_2.jpg"/>
+						<img src="images/main_3.jpg"/>
+						<img src="images/mian_4.jpg"/>
+						<img src="images/mian_5.jpg"/>
+						<img src="images/mian_6.jpg"/>
+						<img src="images/mian_7.jpg"/>
+					</a>
 				</div>
 				<div id="shortshirt_list">
 					<!--要插入的数据a---start-->
@@ -230,6 +238,27 @@
 			</div>
 		</div>
 		
+		<!--右边的侧边栏-->
+		<div id="cbl_main">
+			<!--左边列-->
+			<input type="button" value="X" id="cbl_return"/>
+			<ul id="cbl_main_left">
+				<li>热门活动</li>
+				<li>品牌分类</li>
+				<li>回到顶部</li>
+			</ul>
+			<!--右边列-->
+			<div id="cbl_main_right">
+				<!--要添加的数据-->
+				<!--<a href="">
+						<img src="images/m13.jpg" alt="" />				
+				</a>-->
+				
+				
+				<!--要添加的数据end-->				
+			</div>		
+		</div>
+		<!--右边的侧边栏end-->
 		<!--bottom-->
 		<div id="bottom">
 			<div id="bot_shang">
@@ -405,6 +434,7 @@
 		</div>
 		</footer>
 	<script src="plugin/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 		<script src="js/main.min.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

@@ -1,30 +1,44 @@
 "use strict";
 
 $(function () {
+
 	$.getJSON("http://datainfo.duapp.com/shopdata/getCar.php?callback=?", { userID: $.cookie("username") }, function (data2) {
-		console.log(data2); //获得存入购物车的值
+		//console.log(data2);//获得存入购物车的值
 		var cart_str = "";
 		var saveID = "";
 		$.each(data2, function (index, item) {
 			saveID += "goodsID=" + item.goodsID + "&";
-			cart_str += "<li>\n\t\t\t\t\t\t\t\t<img src=\"" + item.goodsListImg + "\"/>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t\t\t<a href=\"detail.html?id=" + item.goodsID + "\">" + item.goodsName + "</a><br />\n\t\t\t\t\t\t\t\t\t\t<span>" + item.className + "</span>\n\t\t\t\t\t\t\t\t\t</p>\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<strong>1</strong>\n\t\t\t\t\t\t\t\t<strong>\uFFE5399.00</strong>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t<input type=\"button\"  class=\"reduce\" value=\"-\" />\n\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"num_line_txt\" value=\"" + item.number + "\"/>\n\t\t\t\t\t\t\t\t\t<input type=\"button\"  class=\"plus\" value=\"+\" />\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<strong>" + item.price + "</strong>\n\t\t\t\t\t\t\t<strong>-\uFFE5359.00</strong>\n\t\t\t\t\t\t\t<p class=\"cart_delete\">\n\t\t\t\t\t\t\t\t<a href=\"\">\u6536\u85CF</a>\n\t\t\t\t\t\t\t\t<a href=\"\">\u5220\u9664</a>\n\t\t\t\t\t\t\t</p>\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>";
+			cart_str += "<li>\n\t\t\t\t\t\t\t\t<img src=\"" + item.goodsListImg + "\"/>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t\t\t<a href=\"details.html?id=" + item.goodsID + "\">" + item.goodsName + "</a><br />\n\t\t\t\t\t\t\t\t\t\t<span>" + item.className + "</span>\n\t\t\t\t\t\t\t\t\t</p>\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<strong style=\"color:red;\">" + item.goodsID + "</strong>\n\t\t\t\t\t\t\t\t<strong style=\"color:red;\" class=\"c_price\">" + item.price + "</strong>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t<input type=\"button\"  class=\"reduce\" value=\"-\" />\n\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"num_line_txt\" value=\"" + item.number + "\"/>\n\t\t\t\t\t\t\t\t\t<input type=\"button\"  class=\"plus\" value=\"+\" />\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<strong>" + item.price + "</strong>\n\t\t\t\t\t\t\t<strong>" + item.price + "</strong>\n\t\t\t\t\t\t\t<p class=\"cart_delete\">\n\t\t\t\t\t\t\t\t<a href=\"\">\u6536\u85CF</a>\n\t\t\t\t\t\t\t\t<input type=\"button\"  class=\"delete_button\" data-id=\"" + item.goodsID + "\" value=\"\u5220\u9664\"></a>\n\t\t\t\t\t\t\t</p>\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</li>";
 		});
 
 		$("#cart_list").html(cart_str);
 		//加减购买数量
 		function foo() {
-			var arr = $(".num_line_txt").get(); //取到所有的框放到一个数组中
+			var arr = $(".num_line_txt").get(); //取到所有的框中的数量放到一个数组中
+			var arr1 = $(".c_price").get(); //取到所有的价格放到一个数组中
 			//console.log($(".num_line_txt").get());
+			//console.log(arr1);
 			var str = 0;
+			var str_price = 0;
 			for (var i = 0; i < arr.length; i++) {
 				//console.log(arr[i].value)
 				str += parseInt(arr[i].value);
 			}
+
+			for (var j = 0; j < arr1.length; j++) {
+				//console.log(arr[j].innerHTML);
+				str_price += parseInt(arr1[j].innerHTML * arr[j].value);
+			}
+
+			$("#all_money b").text(str_price);
 			$("#all_nums b").text(str);
+			$("#cartlogo").find("span").text(str);
 		}
 
+		foo();
+
 		$(".plus").click(function () {
-			console.log("aaa");
+			//console.log("aaa");
 			$(this).prev().attr("value", parseInt($(this).prev().attr("value")) + 1);
 
 			foo();
@@ -37,6 +51,26 @@ $(function () {
 			}
 			foo();
 		}); //reduce end
+
+		//点击添加和删除购物车的内容
+		$(".delete_button").click(function () {
+			var deleteID = $(this).attr("data-id");
+			//console.log(deleteID);			
+			$.ajax({
+				type: "get",
+				url: "http://datainfo.duapp.com/shopdata/updatecar.php",
+				async: true,
+				//dataType:"jsonp",
+				data: { userID: $.cookie("username"), goodsID: deleteID, number: 0 },
+				success: function success(data3) {
+					//console.log(data3);
+					if (data3 == 1) {
+						location.reload();
+					}
+				} //回调函数end
+
+			}); //ajax的end
+		}); //$(".delete_button")点击事件end
 
 	} //getjson回调函数的end
 	); //$.getjson的end
@@ -55,11 +89,14 @@ $(function () {
 	$.getJSON("http://datainfo.duapp.com/shopdata/getGoods.php?callback=?", { classID: classid }, function (data) {
 		//console.log(data);
 		var str = "";
+		var cbl_str = "";
 		var index_str = "";
 		$.each(data, function (index, item) {
 			str += "<a href=\"details.html?id=" + item.goodsID + "\" class=\"main_classfiy_flex_list\" target=\"_blank\">\n\t\t\t\t\t\t<dl>\n\t\t\t\t\t\t\t<dt><img src=\"" + item.goodsListImg + "\"/></dt>\n\t\t\t\t\t\t\t<dd>\n\t\t\t\t\t\t\t\t<b>" + item.price + "</b>   <strong>\uFFE5359.00</strong>\n\t\t\t\t\t\t\t\t<span>" + item.goodsName + "</span>\n\t\t\t\t\t\t\t\t<p>\u5DF2\u7ECF\u552E\u51FA<em>149</em>\u4EF6</p>\n\t\t\t\t\t\t\t</dd>\n\t\t\t\t\t\t</dl>\t\t\t\t\t\t\n\t\t\t\t\t</a>";
 
 			index_str += "<a href=\"details.html?id=" + item.goodsID + "\" target=\"_blank\">\n\t\t\t\t\t\t<dl>\n\t\t\t\t\t\t\t<dt><img src=\"" + item.goodsListImg + "\"/></dt>\n\t\t\t\t\t\t\t<dd>\n\t\t\t\t\t\t\t\t<p>" + item.goodsName + "</p>\n\t\t\t\t\t\t\t\t<b>" + item.price + "</b>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</dd>\n\t\t\t\t\t\t</dl>\n\t\t\t\t\t</a>";
+
+			cbl_str += "<a href=\"details.html?id=" + item.goodsID + "\">\n\t\t\t\t\t\t<img src=\"" + item.goodsListImg + "\" alt=\"\" />\t\t\t\t\n\t\t\t\t</a>";
 		});
 
 		var indexAll = "";
@@ -67,8 +104,14 @@ $(function () {
 			indexAll += index_str;
 		}
 
+		var cbl_str_all = "";
+		for (var k = 0; k < 2; k++) {
+			cbl_str_all += cbl_str;
+		}
+
 		$("#main_classfiy_flex").html(str);
 		$("#shortshirt_list").html(indexAll);
+		$("#cbl_main_right").html(cbl_str_all);
 	});
 }); //匿名函数end
 
@@ -105,7 +148,7 @@ $(function () {
 		$("#details_right_title").text(data[0].goodsName);
 		$("#details_price_currt").text(data[0].price);
 
-		//添加购物车start
+		//添加购物车start跳转购物车页面
 		$("#jrgwc").click(function () {
 			//console.log(data[0].goodsID);			
 			$.ajax({
@@ -113,7 +156,7 @@ $(function () {
 				url: "http://datainfo.duapp.com/shopdata/updatecar.php",
 				async: true,
 				//dataType:"jsonp",
-				data: { userID: $.cookie("username"), goodsID: data[0].goodsID },
+				data: { userID: $.cookie("username"), goodsID: data[0].goodsID, number: $("#num_line_txt").val() },
 				success: function success(data1) {
 					//console.log(data1);
 					if (data1 == 1) {
@@ -252,29 +295,36 @@ $(function () {
 	});
 })();
 
-/*//调用数据
-;(function(){
-	$(function(){
-			$.ajax({
-				type:"get",
-				url:"http://datainfo.duapp.com/shopdata/getGoods.php?callback=?",
-				async:true,
-				dataType:"jsonp",
-				success:function(data){
-					console.log(data);
-					
-					
-					
-				}
-			});
-	
-	
-	
+$(function () {
+	//轮播图
+	var num = 0;
+	$("#lunbopic img").eq(num).fadeIn().stop().animate({ opacity: 1 }, 100).siblings().fadeOut().stop().animate({ opacity: 0 }, 100);
+
+	var timer = setInterval(function () {
+		num++;
+		if (num >= $("#lunbopic img").length) {
+			num = 0;
+		}
+
+		$("#lunbopic img").eq(num).fadeIn().stop().animate({ opacity: 1 }, 100).siblings().fadeOut().stop().animate({ opacity: 0 }, 100);
+	}, 2000);
+
+	//侧边栏
+
+	$("#cbl_main_left li:not(:last)").click(function () {
+		$(this).parent().parent().animate({ right: 0 }, 800);
 	});
-	
-	
-	
-})(); //调用数据end*/
+
+	$("#cbl_return").click(function () {
+		$(this).parent().animate({ right: -170 }, 800);
+	});
+
+	//回到顶部
+	$("#cbl_main_left li:last").click(function () {
+		$("html,body").animate({ "scrollTop": 0 }, 500);
+	});
+}); //$(function  ---end
+
 
 ;(function () {
 	$("#login_change_btn").click(function () {
